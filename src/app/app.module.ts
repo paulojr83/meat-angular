@@ -4,12 +4,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { ROUTES } from './app.routes'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component'
 import { RestaurantsService }  from './restaurants/restaurants.service';
@@ -20,14 +19,19 @@ import { MenuItemComponent } from './restaturant-detail/menu-item/menu-item.comp
 import { ReviewsComponent } from './restaturant-detail/reviews/reviews.component'
 import { ShoppingCartService } from "./restaturant-detail/shopping-cart/shopping-cart.service";
 import { OrderComponent } from './order/order.component';
-import { InputComponent } from './shared/input/input.component';
+
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { OrderService } from "./order/order.service";
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { SharedModule } from "./shared/shared.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
-    AboutComponent,
+    HomeComponent,    
     RestaurantsComponent,
     RestaurantComponent,
     RestaturantDetailComponent,
@@ -35,17 +39,18 @@ import { InputComponent } from './shared/input/input.component';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderComponent,
-    InputComponent
-    
+    OrderComponent,    
+    OrderItemsComponent,
+    DeliveryCostsComponent,
+    OrderSummaryComponent    
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
+    SharedModule,
     RouterModule.forRoot(ROUTES)    
   ],
-  providers: [RestaurantsService, ShoppingCartService, {provide:LOCALE_ID, useValue:'pt-BR'}],
+  providers: [RestaurantsService, ShoppingCartService,OrderService, {provide:LOCALE_ID, useValue:'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

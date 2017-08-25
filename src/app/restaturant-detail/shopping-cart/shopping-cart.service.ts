@@ -13,9 +13,9 @@ export class ShoppingCartService {
         let foundItem = this.items.find((mItem)=> mItem.menuItem.id === item.id)
         
         if(foundItem){
-            foundItem.quantity = foundItem.quantity + 1
+           this.increaseQty(foundItem)
         }else{
-            this.items.push(new CartItem(item))
+           this.items.push(new CartItem(item))
         }
     }
 
@@ -33,6 +33,19 @@ export class ShoppingCartService {
         return this.items
         .map(item=> item.value())
         .reduce((prev, value)=> prev + value, 0)
+    }
+
+    increaseQty(item:CartItem){
+        item.quantity = item.quantity + 1
+    }
+
+    decreaseQty(item:CartItem){
+        this.removeItem(item)
+    }
+
+    remove(item:CartItem){
+        let indx = this.items.indexOf(item)
+        this.items.splice(indx, 1)
     }
     
 }
