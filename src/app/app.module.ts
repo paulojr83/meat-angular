@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ROUTES } from './app.routes'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
@@ -11,21 +11,13 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component'
-import { RestaurantsService }  from './restaurants/restaurants.service';
 import { RestaturantDetailComponent } from './restaturant-detail/restaturant-detail.component';
 import { MenuComponent } from './restaturant-detail/menu/menu.component';
 import { ShoppingCartComponent } from './restaturant-detail/shopping-cart/shopping-cart.component';
 import { MenuItemComponent } from './restaturant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaturant-detail/reviews/reviews.component'
-import { ShoppingCartService } from "./restaturant-detail/shopping-cart/shopping-cart.service";
-import { OrderComponent } from './order/order.component';
-
-import { OrderItemsComponent } from './order/order-items/order-items.component';
-import { OrderService } from "./order/order.service";
-import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from "./shared/shared.module";
-
 
 @NgModule({
   declarations: [
@@ -38,19 +30,17 @@ import { SharedModule } from "./shared/shared.module";
     MenuComponent,
     ShoppingCartComponent,
     MenuItemComponent,
-    ReviewsComponent,
-    OrderComponent,    
-    OrderItemsComponent,
-    DeliveryCostsComponent,
+    ReviewsComponent,    
     OrderSummaryComponent    
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
-    SharedModule,
-    RouterModule.forRoot(ROUTES)    
+    SharedModule.forRoot(),        
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})    
   ],
-  providers: [RestaurantsService, ShoppingCartService,OrderService, {provide:LOCALE_ID, useValue:'pt-BR'}],
+  providers: [{provide:LOCALE_ID, useValue:'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

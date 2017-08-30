@@ -16,7 +16,7 @@ export const ROUTES: Routes =[
             {path:'menu', component: MenuComponent,data: { title: 'Menu' } },
             {path:'reviews', component: ReviewsComponent,data: { title: 'Review' } },
         ]},
-    {path:'order', component:OrderComponent,data: { title: 'Pedido' } },
+    {path:'order', loadChildren: './order/order.module#OrderModule', data: { title: 'Pedido' } },
     {path:'order-summary', component:OrderSummaryComponent,data: { title: 'Resumo do Pedido' } },
     {path:'about', loadChildren: './about/about.module#AboutModule', data: { title: 'Sobre' } }
 ]

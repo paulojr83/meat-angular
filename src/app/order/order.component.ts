@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
         name: this.formBuilder.control('', [ Validators.required, Validators.minLength(3) ]),
         email: this.formBuilder.control('', [ Validators.required, Validators.pattern(this.emailPattern) ]),
         emailConfirmation: this.formBuilder.control('', [ Validators.required, Validators.pattern(this.emailPattern) ]),
-        address: this.formBuilder.control('', [ Validators.required, Validators.minLength(5)]),
+        address: this.formBuilder.control('', [ Validators.required, Validators.minLength(3)]),
         number: this.formBuilder.control('', [ Validators.required, Validators.pattern(this.numberPatter) ]),
         optionalAddress: this.formBuilder.control(''),
         paymaentOption: this.formBuilder.control('', [ Validators.required ])
