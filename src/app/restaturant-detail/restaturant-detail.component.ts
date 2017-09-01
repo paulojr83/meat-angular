@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router'
   templateUrl: './restaturant-detail.component.html'
 })
 export class RestaturantDetailComponent implements OnInit {
-
+  
   restaurant: Restaurant
 
   constructor(private restaurantsService: RestaurantsService,

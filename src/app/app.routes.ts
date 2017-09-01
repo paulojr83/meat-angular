@@ -6,6 +6,7 @@ import { MenuComponent } from './restaturant-detail/menu/menu.component'
 import { ReviewsComponent } from './restaturant-detail/reviews/reviews.component'
 import { OrderComponent } from './order/order.component'
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const ROUTES: Routes =[
     {path:'', component: HomeComponent, data: { title: 'Bem vindo' } },
@@ -18,5 +19,6 @@ export const ROUTES: Routes =[
         ]},
     {path:'order', loadChildren: './order/order.module#OrderModule', data: { title: 'Pedido' } },
     {path:'order-summary', component:OrderSummaryComponent,data: { title: 'Resumo do Pedido' } },
-    {path:'about', loadChildren: './about/about.module#AboutModule', data: { title: 'Sobre' } }
+    {path:'about', loadChildren: './about/about.module#AboutModule', data: { title: 'Sobre' } },
+    {path:'**', component: NotFoundComponent }
 ]
